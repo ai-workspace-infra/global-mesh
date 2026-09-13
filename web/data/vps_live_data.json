@@ -1,0 +1,10 @@
+{
+  "sync_time": "2026-09-13T21:35:00Z",
+  "providers": {
+    "vultr": 33,
+    "linode": 33,
+    "hetzner": 6,
+    "ucloud": 13,
+    "contabo": 9
+  }
+}

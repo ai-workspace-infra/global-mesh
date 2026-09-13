@@ -1,0 +1,11 @@
+name = "frontend-router-global-mesh"
+main = "router-worker.js"
+compatibility_date = "2024-09-01"
+account_id = "e71be5efb76a00000000000000000000"
+
+[vars]
+CLOUD_RUN_API_URL = "https://global-mesh-api-xyz-uc.a.run.app"
+
+[[routes]]
+pattern = "console-uat.onwalk.net/*"
+zone_name = "onwalk.net"

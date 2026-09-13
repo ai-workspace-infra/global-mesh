@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  xconec-gateway:
+    image: ghcr.io/xconec/gateway:latest
+    container_name: xconec-gateway
+    restart: always
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      # 零信任协调控制面地址
+      - XCONEC_CONTROL_PLANE=${XCONEC_CONTROL_PLANE:-https://coord.xconec.internal}
+      - XCONEC_NODE_KEY=${XCONEC_NODE_KEY}
+      - XCONEC_ROLE=${XCONEC_ROLE:-core-relay}
+      - XCONEC_REGION=${XCONEC_REGION:-auto}
+      # 子网代理配置 (代理本地管理的私网资产)
+      - XCONEC_SUBNET=${XCONEC_SUBNET:-10.240.0.0/24}
+      - XCONEC_ENABLE_DERP=true
+    volumes:
+      - /var/lib/xconec:/var/lib/xconec
+      - /etc/ssl/certs:/etc/ssl/certs:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"

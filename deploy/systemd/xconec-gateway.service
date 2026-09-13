@@ -1,0 +1,16 @@
+[Unit]
+Description=Xconec Zero-Trust Gateway Daemon
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/xconec-gateway --config /etc/xconec/gateway.yaml
+Restart=always
+RestartSec=3s
+LimitNOFILE=65536
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW
+
+[Install]
+WantedBy=multi-user.target

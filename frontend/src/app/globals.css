@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.heat-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  transition: all 0.12s ease-in-out;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.heat-dot:hover {
+  transform: scale(1.35);
+  z-index: 30;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.map-country {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.map-country:hover {
+  filter: brightness(0.85);
+  stroke: #1d4ed8;
+  stroke-width: 1.2px;
+}
+.map-country.highlighted {
+  filter: brightness(0.8);
+  stroke: #2563eb;
+  stroke-width: 1.5px;
+}

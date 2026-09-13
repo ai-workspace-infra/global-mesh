@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing & build outputs
+.next/
+out/
+build/
+dist/
+/backend/server
+
+# Environment & credentials
+.env
+.env*.local
+*.pem
+*.key
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
