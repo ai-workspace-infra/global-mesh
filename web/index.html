@@ -96,31 +96,7 @@
   <div class="max-w-6xl mx-auto space-y-7">
 
     <!-- ================================================================= -->
-    <!-- 1. 顶部身份卡片 (像素级还原附件 1: 橙色圆头像 HP + 居中姓名 + 灰色胶囊标签) -->
-    <!-- ================================================================= -->
-    <div class="flex flex-col items-center justify-center pt-2 pb-1 text-center select-none">
-      <!-- Orange Round Avatar (Exact match to screenshot's #d95300 HP circle) -->
-      <div class="w-[84px] h-[84px] rounded-full flex items-center justify-center text-white text-3xl font-bold tracking-tight shadow-xs mb-3" style="background-color: var(--avatar-orange);">
-        HP
-      </div>
-      
-      <!-- User Name -->
-      <h1 class="text-2xl font-bold tracking-tight text-[var(--text-main)]">
-        Haitao Pan
-      </h1>
-      
-      <!-- Handle & Pill Badge (Exact match: @da93628bc13d47af9a · Plus) -->
-      <div class="flex items-center gap-2 mt-1.5 text-xs text-[var(--text-muted)]">
-        <span class="font-mono text-gray-500 dark:text-gray-400">@da93628bc13d47af9a</span>
-        <span class="text-gray-300 dark:text-gray-600 font-bold">·</span>
-        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700">
-          Plus
-        </span>
-      </div>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- 2. 五列指标卡片 (像素级还原附件 1: 圆角白色卡片 + 细竖线分割 + 核心数据) -->
+    <!-- 1. 五列指标卡片 (5 大核心 VPS 运营商、48 个 PoP、0 端口、100% 容灾) -->
     <!-- ================================================================= -->
     <div class="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-2xl shadow-xs overflow-hidden">
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-[var(--card-border)] py-4 px-2 sm:px-4 text-center">
@@ -382,10 +358,10 @@
           <span class="text-xs text-[var(--text-muted)] font-mono">Top 15 Countries</span>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        
           
           <!-- Left: Accurate SVG Vector World Map (Choropleth styled like attachment) -->
-          <div class="lg:col-span-7 relative bg-slate-50/70 dark:bg-slate-900/40 rounded-xl p-3 border border-slate-100 dark:border-slate-800 flex items-center justify-center">
+          <div class="w-full relative bg-slate-50/70 dark:bg-slate-900/40 rounded-2xl p-4 sm:p-6 border border-slate-100 dark:border-slate-800 flex items-center justify-center overflow-hidden">
             
             <svg id="worldMapSvg" viewBox="0 0 1000 500" class="w-full h-auto select-none" style="max-height: 380px;">
               <defs>
@@ -612,126 +588,13 @@
             </svg>
 
             <!-- Map Floating Tooltip -->
-            <div id="mapTooltip" class="absolute hidden px-2.5 py-1.5 rounded-lg bg-slate-900/90 text-white text-[11px] font-mono shadow-md pointer-events-none z-30 transform -translate-x-1/2 -translate-y-full mb-2">
-              <span id="mapTooltipText">Japan · 142.9k</span>
+            <div id="mapTooltip" class="absolute z-30 pointer-events-none p-3 rounded-xl bg-slate-900/95 dark:bg-slate-800/95 text-white font-mono text-xs shadow-2xl border border-slate-700/70 leading-snug" style="left: 76%; top: 44%; transform: translate(-50%, -50%); min-width: 160px; max-width: 240px;">
+              <span id="mapTooltipText"><div class="font-bold text-sm text-white mb-1">Australia:</div><div class="text-slate-200 font-medium">3.60k · 3 PoPs</div><div class="text-slate-400 text-[11px] mt-1">(Linode, Vultr, Contabo 悉尼)</div></span>
             </div>
 
           </div>
 
-          <!-- Right: Country Ranked Progress Bar List (Exact match to attachment 2) -->
-          <div class="lg:col-span-5 space-y-2.5 text-xs select-none pr-1">
-            
-            <!-- Item: Japan -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-jp', 'Japan: 142.9k 请求 · 12 PoPs')" onmouseleave="unhighlightCountry('country-jp')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">Japan</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 82%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">142.9k</span>
-            </div>
-
-            <!-- Item: United States -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-us', 'United States: 59.91k 请求 · 14 PoPs')" onmouseleave="unhighlightCountry('country-us')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">United States</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 48%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">59.91k</span>
-            </div>
-
-            <!-- Item: Philippines -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-ph', 'Philippines: 21.08k 请求 · UCloud')" onmouseleave="unhighlightCountry('country-ph')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">Philippines</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 22%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">21.08k</span>
-            </div>
-
-            <!-- Item: Netherlands -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-nl', 'Netherlands: 13.43k 请求 · AMS-IX')" onmouseleave="unhighlightCountry('country-nl')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">Netherlands</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 14%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">13.43k</span>
-            </div>
-
-            <!-- Item: Hong Kong -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-hk', 'Hong Kong: 8.44k 请求 · CN2 GIA')" onmouseleave="unhighlightCountry('country-hk')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">Hong Kong</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 10%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">8.44k</span>
-            </div>
-
-            <!-- Item: Germany -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-de', 'Germany: 8.24k 请求 · Hetzner/Linode')" onmouseleave="unhighlightCountry('country-de')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">Germany</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 9.8%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">8.24k</span>
-            </div>
-
-            <!-- Item: India -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-in', 'India: 6.99k 请求 · 3 PoPs')" onmouseleave="unhighlightCountry('country-in')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">India</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 8.5%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">6.99k</span>
-            </div>
-
-            <!-- Item: China -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-cn', 'China: 6.07k 请求 · 运维接入')" onmouseleave="unhighlightCountry('country-cn')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">China</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 7.6%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">6.07k</span>
-            </div>
-
-            <!-- Item: Singapore -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-sg', 'Singapore: 4.76k 请求 · 5云汇聚')" onmouseleave="unhighlightCountry('country-sg')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">Singapore</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 6.2%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">4.76k</span>
-            </div>
-
-            <!-- Item: Israel -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-il', 'Israel: 4.47k 请求 · Vultr TLV')" onmouseleave="unhighlightCountry('country-il')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">Israel</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 5.8%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">4.47k</span>
-            </div>
-
-            <!-- Item: Italy -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-it', 'Italy: 3.14k 请求')" onmouseleave="unhighlightCountry('country-it')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">Italy</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 4.2%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">3.14k</span>
-            </div>
-
-            <!-- Item: Canada -->
-            <div class="country-row flex items-center justify-between gap-3 p-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer" onmouseenter="highlightCountry('country-ca', 'Canada: 2.86k 请求 · 多伦多')" onmouseleave="unhighlightCountry('country-ca')">
-              <span class="w-24 truncate font-medium text-[var(--text-main)]">Canada</span>
-              <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-600 rounded-full" style="width: 3.9%;"></div>
-              </div>
-              <span class="w-14 text-right font-mono text-[var(--text-muted)] font-medium">2.86k</span>
-            </div>
-
-          </div>
-
-        </div>
+          
 
       </div>
 
